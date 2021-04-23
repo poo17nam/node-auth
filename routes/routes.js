@@ -48,21 +48,35 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/user', async (req, res) => {
-    const cookie = req.cookies['jwt']
-
-    const claims = jwt.verify(cookie, "secret")
-
-    if(!claims) {
+    try { 
+        const cookie = req.cookies['jwt']
+    
+        const claims = jwt.verify(cookie, "secret")
+    
+        if(!claims) {
+            return res.status(401).send({
+                message: 'unauthenticated'
+            })
+        }
+    
+        const user = await User.findOne({_id: claims._id})
+    
+        const {password, ...data} = await user.toJSON()
+    
+        res.send(data)
+    } catch (error) {
         return res.status(401).send({
             message: 'unauthenticated'
         })
     }
+})
 
-    const user = await User.findOne({_id: claims._id})
+router.post('/logout', (req, res) => {
+    res.cookie('jwt','',{maxAge:0})
 
-    const {password, ...data} = await user.toJSON()
-
-    res.send(data)
+    res.send({
+        message: 'success'
+    })
 })
 
 module.exports = router
