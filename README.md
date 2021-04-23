@@ -36,5 +36,5 @@ Node server is now running on http://localhost:8000
 
 Postman collection :
 
-You can find the routes and sample requests **[here](https://github.com/poo17nam/node-auth/blob/main/node-auth.postman_collection.json)**
-Download and import it in postman and explore the APIs
+You can find the routes and sample requests **[here](https://github.com/poo17nam/node-auth/blob/main/node-auth.postman_collection.json)**.
+Download, import in postman and explore the APIs
