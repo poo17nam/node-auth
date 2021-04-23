@@ -32,9 +32,9 @@ Run node server :
 $   npm start
 ```
 
+Node server is now running on http://localhost:8000
+
 Postman collection :
 
 You can find the routes and sample requests **[here](https://github.com/poo17nam/node-auth/blob/main/node-auth.postman_collection.json)**
-
-
-Node server is now running on http://localhost:8000
+Download and import it in postman and explore the APIs
